@@ -14,7 +14,7 @@ public class FlaskController {
     @Value("${flask.url}")
     private String flaskUrl;
 
-    public Object getFlaskResponse(String path, Object flaskRequestDto, Class<?> flaskResponseDtoClass) throws Exception {
+    public Object getFlaskResponse(String path, HttpMethod methodType, Object flaskRequestDto, Class<?> flaskResponseDtoClass) throws Exception {
         RestTemplate restTemplate = new RestTemplate();
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -31,7 +31,7 @@ public class FlaskController {
         // request to flask server
         ResponseEntity<?> responseEntity = restTemplate.exchange(
             flaskUrl + path,
-                HttpMethod.POST,
+                methodType,
                 httpEntity,
                 flaskResponseDtoClass
         );
