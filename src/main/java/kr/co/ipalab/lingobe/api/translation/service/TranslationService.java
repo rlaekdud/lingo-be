@@ -21,7 +21,7 @@ public class TranslationService {
     private final String FLASK_TRANSLATION_PATH = "/translation";
 
     /**
-     * 번역 메소드
+     * get translation and its score from text
      * @param translationRequestDto translationRequest 시 사용하는 dto
      * @return Response<?>
      */
