@@ -9,10 +9,7 @@ import kr.co.ipalab.lingobe.api.translation.dto.request.TranslationRequestDto;
 import kr.co.ipalab.lingobe.api.translation.service.TranslationService;
 import kr.co.ipalab.lingobe.global.utils.Response;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * translation controller class
@@ -31,7 +28,7 @@ public class TranslationController {
      * @param translationRequestDto translationRequest 시 사용하는 dto
      * @return Response<?>
      */
-    @PostMapping()
+    @GetMapping()
     @Operation(summary = "번역", description = "문장을 번역하고 이에 대한 자체 성능평가 결과와 함께 제공합니다.")
     @ApiResponse(responseCode = "200", description = "성공", content = @Content(schema = @Schema(implementation = Response.class)))
     public Response<?> translate(@RequestBody TranslationRequestDto translationRequestDto) {
