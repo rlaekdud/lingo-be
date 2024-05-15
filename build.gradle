@@ -29,9 +29,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     // Redis
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    // Spring Security
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    testImplementation 'org.springframework.security:spring-security-test'
     // Validation
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     // Spring Web
@@ -55,6 +52,8 @@ dependencies {
     implementation 'com.querydsl:querydsl-core'
     annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
     annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
+    // mongoDB
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 }
 
 tasks.named('test') {
