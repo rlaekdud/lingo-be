@@ -10,8 +10,6 @@ import java.util.Map;
 import kr.co.ipalab.lingobe.global.exception.GlobalException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -21,18 +19,6 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @Slf4j
 @RestControllerAdvice
 public class GlobalExceptionAdvice {
-
-    @ExceptionHandler(BadCredentialsException.class)
-    public ResponseEntity<ErrorResponse<?>> passwordError(BadCredentialsException e) {
-
-        ErrorResponse<?> body = ErrorResponse.builder()
-            .status(BAD_REQUEST.value())
-            .code(A01)
-            .message(getErrorLog(e))
-            .build();
-
-        return ResponseEntity.status(BAD_REQUEST).body(body);
-    }
 
     /**
      * 예외 메시지 핸들러
@@ -73,18 +59,6 @@ public class GlobalExceptionAdvice {
             .status(BAD_REQUEST.value())
             .code(P01)
             .message(errorMessages)
-            .build();
-
-        return ResponseEntity.status(BAD_REQUEST).body(body);
-    }
-
-    @ExceptionHandler(AccessDeniedException.class)
-    public ResponseEntity<ErrorResponse<?>> accessDeniedException(AccessDeniedException e) {
-
-        ErrorResponse<?> body = ErrorResponse.builder()
-            .status(BAD_REQUEST.value())
-            .code(A01)
-            .message(A01.getDescription())
             .build();
 
         return ResponseEntity.status(BAD_REQUEST).body(body);

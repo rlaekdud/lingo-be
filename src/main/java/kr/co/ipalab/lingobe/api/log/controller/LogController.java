@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("log")
+@RequestMapping("/log")
 @Tag(name = "로그 컨트롤러")
 public class LogController {
 

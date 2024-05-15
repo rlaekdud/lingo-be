@@ -6,18 +6,3 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/lingo-db
-
-  sql:
-    init:
-      data-locations: classpath:data.sql
-      schema-locations: classpath:schema.sql
-      mode: always
-
-  jpa:
-    hibernate:
-      ddl-auto: none #create, create-drop, update ...
-    defer-datasource-initialization: true
-    properties:
-      hibernate:
-        show_sql: true
-        dialect: org.hibernate.dialect.MongoDialect
