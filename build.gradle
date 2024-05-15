@@ -55,6 +55,8 @@ dependencies {
     implementation 'com.querydsl:querydsl-core'
     annotationProcessor 'jakarta.persistence:jakarta.persistence-api'
     annotationProcessor 'jakarta.annotation:jakarta.annotation-api'
+    // mongoDB
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 }
 
 tasks.named('test') {
