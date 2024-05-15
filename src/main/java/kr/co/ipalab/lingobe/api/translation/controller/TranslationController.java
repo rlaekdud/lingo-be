@@ -25,8 +25,8 @@ public class TranslationController {
     private final TranslationService translationService;
 
     /**
-     * 번역 메소드
-     * @param translationRequestDto translationRequest 시 사용하는 dto
+     * get translation of text
+     * @param translationRequestDto dto used in translationRequest
      * @return Response<?>
      */
     @GetMapping()

@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * suggestion controller class
+ * @version 1.0.0
+ * @author Kim Dayeong
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/suggestion")
@@ -22,7 +27,11 @@ public class SuggestionController {
 
     private final SuggestionService suggestionService;
 
-
+    /**
+     * get suggestion of target word
+     * @param suggestionRequestDto dto used in suggestionRequest
+     * @return Response<?>
+     */
     @GetMapping()
     @Operation(summary = "추천 단어 제안", description = "단어와 전체 문장을 입력하면 해당 단어에 대한 추천 단어를 제안합니다.")
     @ApiResponse(responseCode = "200", description = "성공", content = @Content(schema = @Schema(implementation = Response.class)))
