@@ -21,11 +21,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/translation")
 @Tag(name = "번역 컨트롤러")
 public class TranslationController {
+
     private final TranslationService translationService;
 
     /**
-     * 번역 메소드
-     * @param translationRequestDto translationRequest 시 사용하는 dto
+     * get translation of text
+     * @param translationRequestDto dto used in translationRequest
      * @return Response<?>
      */
     @GetMapping()
