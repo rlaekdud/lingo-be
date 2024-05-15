@@ -8,7 +8,6 @@ import kr.co.ipalab.lingobe.global.utils.FlaskServerManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.ResourceAccessException;
 
 /**
  * translation service class
