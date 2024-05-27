@@ -4,7 +4,6 @@
 - [Others](#Others)
 
 ## Description
-- - -
 > **Lingo is medical terminology-focused translation model testing environment.**
 - Lingo provide a simple functions to test translation models.
 - Lingo provide a basic translation model for testing.
@@ -15,7 +14,6 @@
   - **Artificial Intelligence** : [Kim Byunghyun](), [Go Dongyeon]()
 
 ## Functions - based on API
-- - - 
 ### 🌏 Translation
 > Get translation result from model with given query.
 - URI : `/translation`
@@ -112,7 +110,6 @@
 - With authorization : `false`
 
 ## Others
-- - -
 - **This program is :**
   - only for testing purposes.
   - does not support membership functions.
