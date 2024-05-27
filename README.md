@@ -1,6 +1,9 @@
 # 🦉Lingo
 - [Description](#Description)
 - [Functions ― based on API](#Functions---based-on-API)
+  - [🌏 Translation](#-translation)
+  - [🔮 Suggestion](#-suggestion)
+  - [🎞️ Logs](#-logs)
 - [Others](#Others)
 
 ## Description
@@ -64,7 +67,7 @@
 - Fail response status : `400`
 - With authorization : `false`
 
-### 🎞️ Logs
+### 🎞 Logs
 > Save logs of current session.
 - URI : `/log`
 - Method : `POST`
