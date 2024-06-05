@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/suggestion")
+@RequestMapping("/lingo-be/api")
 @Tag(name = "추천 단어 제안 컨트롤러")
 public class SuggestionController {
 
@@ -32,7 +32,7 @@ public class SuggestionController {
      * @param suggestionRequestDto dto used in suggestionRequest
      * @return Response<?>
      */
-    @GetMapping()
+    @GetMapping("/suggestion")
     @Operation(summary = "추천 단어 제안", description = "단어와 전체 문장을 입력하면 해당 단어에 대한 추천 단어를 제안합니다.")
     @ApiResponse(responseCode = "200", description = "성공", content = @Content(schema = @Schema(implementation = Response.class)))
     public Response<?> getSuggestion(@RequestBody SuggestionRequestDto suggestionRequestDto) {

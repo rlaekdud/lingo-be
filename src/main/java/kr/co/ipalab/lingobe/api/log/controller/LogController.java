@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/log")
+@RequestMapping("/lingo-be/api")
 @Tag(name = "로그 컨트롤러")
 public class LogController {
 
     private final LogService logService;
 
-    @PostMapping()
+    @PostMapping("/log")
     @Operation(summary = "로그 저장", description = "로그를 저장합니다.")
     @ApiResponse(responseCode = "200", description = "성공", content = @Content(schema = @Schema(implementation = Response.class)))
     public Response<?> saveLog(@RequestBody LogRequestDto logRequestDto) {

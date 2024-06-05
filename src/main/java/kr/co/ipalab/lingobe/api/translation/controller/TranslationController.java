@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/translation")
+@RequestMapping("/lingo-be/api")
 @Tag(name = "번역 컨트롤러")
 public class TranslationController {
 
@@ -29,8 +29,8 @@ public class TranslationController {
      * @param translationRequestDto dto used in translationRequest
      * @return Response<?>
      */
-    @GetMapping()
-    @Operation(summary = "번역", description = "문장을 번역하고 이에 대한 자체 성능평가 결과와 함께 제공합니다.")
+    @GetMapping("/translation")
+    @Operation(summary = "번역", description = "문장을 번역하고 이에 대한 자체 성능 평가 결과와 함께 제공합니다.")
     @ApiResponse(responseCode = "200", description = "성공", content = @Content(schema = @Schema(implementation = Response.class)))
     public Response<?> translate(@RequestBody TranslationRequestDto translationRequestDto) {
         return Response.ok(translationService.translateText(translationRequestDto), "성공적으로 번역하였습니다.");
