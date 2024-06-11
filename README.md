@@ -29,7 +29,7 @@
         query: "string", // text to translate
         sourceLan: "string",
         targetLan: "string",
-        kargs: dict
+        kwargs: dict
     }
     ```
 - Response body :
