@@ -15,5 +15,5 @@ public class FlaskTranslationRequestDto {
     private String query;
     private String sourceLan;
     private String targetLan;
-    private Map<String, Object> kargs;
+    private Map<String, Object> kwargs;
 }

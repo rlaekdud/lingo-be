@@ -15,5 +15,5 @@ public class TranslationRequestDto {
     private String query;
     private String sourceLan;
     private String targetLan;
-    private Map<String, String> kargs;
+    private Map<String, String> kwargs;
 }
