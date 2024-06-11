@@ -43,10 +43,10 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Docker Image Build
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest .
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:latest .
 
     - name: Docker Push
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE_NAME }}:latest
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}:latest
 
     - name: lab deploy server 접속 및 app 실행
       uses: appleboy/ssh-action@v0.1.6
