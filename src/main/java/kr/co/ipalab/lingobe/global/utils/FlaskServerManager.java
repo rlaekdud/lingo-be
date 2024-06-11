@@ -9,7 +9,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 public class FlaskServerManager {
@@ -25,8 +24,11 @@ public class FlaskServerManager {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
 
+        String requestBody = "";
         // Body set
-        String requestBody = objectMapper.writeValueAsString(flaskRequestDto);
+        if (flaskRequestDto != null) {
+            requestBody = objectMapper.writeValueAsString(flaskRequestDto);
+        }
 
         // HttpEntity set
         HttpEntity<String> httpEntity = new HttpEntity<>(requestBody, httpHeaders);

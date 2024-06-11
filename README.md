@@ -4,6 +4,7 @@
   - [🌏 Translation](#-translation)
   - [🔮 Suggestion](#-suggestion)
   - [🎞️ Logs](#-logs)
+  - [⛓️ Model list](#-model-list)
 - [Others](#Others)
 
 ## Description
@@ -61,6 +62,24 @@
     ```
     {
         suggestions: ["string", ... ]
+    }
+    ```
+- Success response status : `200`
+- Fail response status : `400`
+- With authorization : `false`
+
+### ⛓️ Model list
+> Get model list from AI server
+- URI : `/model-list`
+- Method : `GET`
+- Response body :
+    ```
+    {
+        modelList: [
+            {
+                name: "string" // model spec 확장 가능하도록 설계
+            }, ...
+        ]
     }
     ```
 - Success response status : `200`
