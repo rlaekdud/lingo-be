@@ -12,5 +12,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class FlaskTranslationResponseDto {
     private Map<String, Object> score;
-    private String query; // result of translation
+    private String output; // result of translation
 }
