@@ -29,7 +29,7 @@ public class TranslationService {
         try {
             FlaskTranslationResponseDto flaskTranslationResponse = FlaskServerManager.getFlaskResponse(FLASK_TRANSLATION_PATH, HttpMethod.GET, translationRequestDto, FlaskTranslationResponseDto.class);
             return TranslationResponseDto.builder()
-                .translatedResult(flaskTranslationResponse.getQuery())
+                .translatedResult(flaskTranslationResponse.getOutput())
                 .build();
         } catch (Exception e) {
             throw new FlaskResponseTimeoutError();
