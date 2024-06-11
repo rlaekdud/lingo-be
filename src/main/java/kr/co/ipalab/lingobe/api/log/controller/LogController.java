@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Log Controller
+ * @version 1.0.0
+ * @author Kim Dayeong
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/lingo-be/api")
@@ -22,6 +27,11 @@ public class LogController {
 
     private final LogService logService;
 
+    /**
+     * save log with request
+     * @param logRequestDto log
+     * @return success message
+     */
     @PostMapping("/log")
     @Operation(summary = "로그 저장", description = "로그를 저장합니다.")
     @ApiResponse(responseCode = "200", description = "성공", content = @Content(schema = @Schema(implementation = Response.class)))
