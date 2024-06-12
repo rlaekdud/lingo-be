@@ -14,6 +14,9 @@
   - [API 추가](#api-추가)
   - [API 수정](#api-수정)
   - [API 삭제](#api-삭제)
+- [배포 환경 설정](#배포-환경-설정)
+  - [input port 설정](#input-port-설정)
+  - [MongoDB 설치](#mongodb-설치)
 
 ## ⛓️ Source structure
 > **해당 시스템은 Spring Boot 기반으로 구성되어 있습니다. 따라서 MVC 패턴을 따르고 있으며, 각 패키지별로 역할을 나누어 구성되어 있습니다.
@@ -185,6 +188,19 @@ main
 - [ ] `repository`에 있는 데이터베이스 접근 메소드를 삭제합니다.
 - [ ] `exception`에 있는 예외 처리 메소드를 삭제합니다.
 - [ ] `global` 패키지 내에 있는 범용적으로 사용되는 것들을 삭제합니다.
+
+## 배포 환경 설정
+### input port 설정
+- 배포 서버의 인바운드 설정이 필요합니다.
+- `sudo iptables -I INPUT 1 -p tcp —dport 8080 -j ACCEPT` 명령어를 사용하여 8080 포트를 열어줍니다.
+- `sudo iptables -P OUTPUT ACCEPT` 명령어를 사용하여 OUTPUT 설정을 ACCEPT로 변경합니다.
+
+### MongoDB 설치
+- 배포 서버가 하나로 통일되어 있기 때문에 한 서버에 DB를 설치하고 BE를 배포해 사용합니다.
+- Docker를 활용해 MongoDB를 설치하고 실행합니다.
+  - MongoDB 설치 방법은 [여기](https://poiemaweb.com/docker-mongodb)를 참고하세요.
+  - 단, **컨테이너 실행 시 `--network=host` option을 사용하여 호스트 네트워크와 연결합니다.**
+- Docker를 사용하지 않을 경우 [여기](https://coterie.tistory.com/20)를 참고하여 MongoDB를 설치하세요.
 
 - - -
 **Developed by ipalab(KNU)**, API 문서 관련 연락은 [여기](https://github.com/rlaekdud)로 부탁드립니다.
