@@ -62,6 +62,6 @@ jobs:
           sudo docker rmi ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
           sudo docker pull ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
 
-          sudo docker run -p ${{ secrets.PORT }}:${{ secrets.PORT }} \
+          sudo docker run --network=host -p ${{ secrets.PORT }}:${{ secrets.PORT }} \
           --name ${{ secrets.DOCKER_IMAGE }} \
           -d ${{ secrets.DOCKER_USERNAME }}/${{ secrets.DOCKER_IMAGE }}
