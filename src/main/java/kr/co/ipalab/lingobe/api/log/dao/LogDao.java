@@ -23,7 +23,7 @@ public class LogDao {
      */
     public void saveLog(LogRequestDto logRequestDto) {
         LogEntity logEntity = new LogEntity();
-        logEntity.setSession(logRequestDto);
+        logEntity.setSession(logRequestDto.getSession());
         logRepository.save(logEntity);
     }
 }

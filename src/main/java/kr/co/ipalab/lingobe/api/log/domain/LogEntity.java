@@ -1,6 +1,7 @@
 package kr.co.ipalab.lingobe.api.log.domain;
 
-import kr.co.ipalab.lingobe.api.log.dto.request.LogRequestDto;
+import java.util.List;
+import kr.co.ipalab.lingobe.api.log.dto.request.TranslationDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,5 +17,5 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class LogEntity {
     @Id
     private String id;
-    private LogRequestDto session;
+    private List<TranslationDto> session;
 }
