@@ -14,8 +14,8 @@
 - Lingo supports universal api to test multiple models.
 - [Developed by ipalab(KNU)](https://sites.google.com/view/ipalab)
   - **Backend** : [Kim Dayeong](https://github.com/rlaekdud)
-  - **Frontend** : [Kim Daegun]()
-  - **Artificial Intelligence** : [Kim Byunghyun](), [Go Dongyeon]()
+  - **Frontend** : [Kim Daegun](https://github.com/toothlessdev)
+  - **Artificial Intelligence** : [Kim Byunghyun](https://github.com/KBH00), [Go Dongyeon](https://github.com/dylangoh235)
 
 ## Functions - based on API
 ### 🌏 Translation
