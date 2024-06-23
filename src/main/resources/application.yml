@@ -2,7 +2,7 @@ server:
   port: 8080
 
 flask:
-  url: http://localhost:5000
+  url: ${DEPLOY_HOST}:8000
 
 spring:
   application:
