@@ -9,15 +9,31 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
+@Component
 public class FlaskServerManager {
 
-    @Value("${flask.url}")
-    private static String flaskUrl;
+    private static String flaskIp;
+    private static String flaskPort;
+    private static String flaskUri;
+
+    @Value("${flask.ip}")
+    public void setFlaskIp(String flaskIp) {
+        FlaskServerManager.flaskIp = flaskIp;
+    }
 
     @Value("${flask.port}")
-    private static String flaskPort;
+    public void setFlaskPort(String flaskPort) {
+        FlaskServerManager.flaskPort = flaskPort;
+    }
+
+    @Value("${flask.uri}")
+    public void setFlaskUri(String flaskUri) {
+        FlaskServerManager.flaskUri = flaskUri;
+    }
 
     public static <T> T getFlaskResponse(String path, HttpMethod methodType, Object flaskRequestDto, Class<?> flaskResponseDtoClass) throws Exception {
         RestTemplate restTemplate = createRestTemplateWithTimeouts();
@@ -37,15 +53,25 @@ public class FlaskServerManager {
         HttpEntity<String> httpEntity = new HttpEntity<>(requestBody, httpHeaders);
 
         // request to flask server
-        ResponseEntity<?> responseEntity = restTemplate.exchange(
-            flaskUrl + flaskPort + path,
+        try {
+            ResponseEntity<?> responseEntity = restTemplate.exchange(
+                flaskIp + flaskPort + flaskUri + path,
                 methodType,
                 httpEntity,
                 flaskResponseDtoClass
-        );
+            );
 
-        // response object return
-        return (T) responseEntity.getBody();
+            // response object return
+            return (T) responseEntity.getBody();
+
+        } catch (RestClientException e) {
+            // process exception
+            if (e.getMessage().contains("Read timed out")) {
+                throw new Exception("Flask server response timeout");
+            }
+        }
+
+        return null;
     }
 
     private static RestTemplate createRestTemplateWithTimeouts() {
