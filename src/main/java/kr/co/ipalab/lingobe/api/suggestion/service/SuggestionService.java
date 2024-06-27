@@ -31,9 +31,15 @@ public class SuggestionService {
         try {
             FlaskSuggestionRequestDto flaskSuggestionRequest = new FlaskSuggestionRequestDto(suggestionRequestDto.getModel(), suggestionRequestDto.getTargetWord(), suggestionRequestDto.getSentence(), suggestionRequestDto.getContextLen(), suggestionRequestDto.getText(), suggestionRequestDto.getAbbreviation());
             FlaskSuggestionResponseDto flaskSuggestionResponse = FlaskServerManager.getFlaskResponse(FLASK_SUGGESTION_PATH, HttpMethod.GET, flaskSuggestionRequest, FlaskSuggestionResponseDto.class);
-            return SuggestionResponseDto.builder()
-                .suggestions(flaskSuggestionResponse.getSuggestions())
-                .build();
+            if (flaskSuggestionResponse != null) {
+                return SuggestionResponseDto.builder()
+                    .suggestions(
+                        flaskSuggestionResponse.getSuggestions()
+                    )
+                    .build();
+            } else {
+                throw new FlaskResponseTimeoutError();
+            }
         } catch (Exception e) {
             throw new FlaskResponseTimeoutError();
         }
