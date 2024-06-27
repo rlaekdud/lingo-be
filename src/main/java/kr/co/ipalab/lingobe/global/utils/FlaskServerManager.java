@@ -16,6 +16,9 @@ public class FlaskServerManager {
     @Value("${flask.url}")
     private static String flaskUrl;
 
+    @Value("${flask.port}")
+    private static String flaskPort;
+
     public static <T> T getFlaskResponse(String path, HttpMethod methodType, Object flaskRequestDto, Class<?> flaskResponseDtoClass) throws Exception {
         RestTemplate restTemplate = createRestTemplateWithTimeouts();
         ObjectMapper objectMapper = new ObjectMapper();
@@ -35,7 +38,7 @@ public class FlaskServerManager {
 
         // request to flask server
         ResponseEntity<?> responseEntity = restTemplate.exchange(
-            flaskUrl + path,
+            flaskUrl + flaskPort + path,
                 methodType,
                 httpEntity,
                 flaskResponseDtoClass
