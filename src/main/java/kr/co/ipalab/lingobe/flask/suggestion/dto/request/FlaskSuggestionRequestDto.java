@@ -11,9 +11,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class FlaskSuggestionRequestDto {
     private String model;
-    private Integer targetWord;
+    private String targetWord;
     private Boolean sentence;
-    private Integer contextLen;
+    private Integer cntxt_len;
     private String text;
     private Boolean abbreviation;
 }
