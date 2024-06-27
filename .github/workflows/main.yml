@@ -34,7 +34,7 @@ jobs:
       with:
         files: 'src/main/resources/application.yml'
       env:
-        flask.url: ${{ secrets.DEPLOY_HOST }}
+        flask.ip: ${{ secrets.DEPLOY_HOST }}
 
     # Gradle Build를 위한 권한 부여
     - name: Grant execute permission for gradlew
