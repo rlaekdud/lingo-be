@@ -9,7 +9,7 @@ import kr.co.ipalab.lingobe.api.suggestion.dto.request.SuggestionRequestDto;
 import kr.co.ipalab.lingobe.api.suggestion.service.SuggestionService;
 import kr.co.ipalab.lingobe.global.utils.Response;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,7 +32,7 @@ public class SuggestionController {
      * @param suggestionRequestDto dto used in suggestionRequest
      * @return Response<?>
      */
-    @GetMapping("/suggestion")
+    @PostMapping("/suggestion")
     @Operation(summary = "추천 단어 제안", description = "단어와 전체 문장을 입력하면 해당 단어에 대한 추천 단어를 제안합니다.")
     @ApiResponse(responseCode = "200", description = "성공", content = @Content(schema = @Schema(implementation = Response.class)))
     public Response<?> getSuggestion(@RequestBody SuggestionRequestDto suggestionRequestDto) {

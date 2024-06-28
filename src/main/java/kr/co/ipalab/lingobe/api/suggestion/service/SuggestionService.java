@@ -30,7 +30,7 @@ public class SuggestionService {
     public SuggestionResponseDto getSuggestion(SuggestionRequestDto suggestionRequestDto) {
         try {
             FlaskSuggestionRequestDto flaskSuggestionRequest = new FlaskSuggestionRequestDto(suggestionRequestDto.getModel(), suggestionRequestDto.getTargetWord(), suggestionRequestDto.getSentence(), suggestionRequestDto.getContextLen(), suggestionRequestDto.getText(), suggestionRequestDto.getAbbreviation());
-            FlaskSuggestionResponseDto flaskSuggestionResponse = FlaskServerManager.getFlaskResponse(FLASK_SUGGESTION_PATH, HttpMethod.GET, flaskSuggestionRequest, FlaskSuggestionResponseDto.class);
+            FlaskSuggestionResponseDto flaskSuggestionResponse = FlaskServerManager.getFlaskResponse(FLASK_SUGGESTION_PATH, HttpMethod.POST, flaskSuggestionRequest, FlaskSuggestionResponseDto.class);
             if (flaskSuggestionResponse != null) {
                 return SuggestionResponseDto.builder()
                     .suggestions(
