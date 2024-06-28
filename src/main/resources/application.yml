@@ -1,11 +1,6 @@
 server:
   port: 8080
 
-flask:
-  ip: ${DEPLOY_HOST}
-  port: :8000
-  uri: /lingo-ai/api
-
 spring:
   application:
     name: lingo-be

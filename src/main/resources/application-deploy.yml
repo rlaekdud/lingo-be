@@ -7,3 +7,8 @@ spring:
     mongodb:
 #      차후 배포 환경이 변경될 시 수정
       uri: mongodb://localhost:27017/lingo-db
+
+flask:
+  ip: localhost
+  port: :8000
+  uri: /lingo-ai/api
