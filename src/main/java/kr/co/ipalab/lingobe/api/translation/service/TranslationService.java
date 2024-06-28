@@ -30,6 +30,7 @@ public class TranslationService {
             FlaskTranslationResponseDto flaskTranslationResponse = FlaskServerManager.getFlaskResponse(FLASK_TRANSLATION_PATH, HttpMethod.POST, translationRequestDto, FlaskTranslationResponseDto.class);
             if (flaskTranslationResponse != null) {
                 return TranslationResponseDto.builder()
+                    .score(flaskTranslationResponse.getScore())
                     .translatedResult(flaskTranslationResponse.getOutput())
                     .build();
             } else {
