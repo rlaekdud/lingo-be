@@ -13,6 +13,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class TranslationResponseDto {
-    private Map<String, Object> score;
+    private Double score;
     private String translatedResult;
 }

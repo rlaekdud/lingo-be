@@ -11,6 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FlaskTranslationResponseDto {
-    private Integer score;
+    private Double score;
     private String output; // result of translation
 }
