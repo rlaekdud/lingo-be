@@ -7,6 +7,7 @@ import kr.co.ipalab.lingobe.flask.suggestion.dto.response.FlaskSuggestionRespons
 import kr.co.ipalab.lingobe.global.exception.FlaskResponseTimeoutError;
 import kr.co.ipalab.lingobe.global.utils.FlaskServerManager;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class SuggestionService {
 
     private final String FLASK_SUGGESTION_PATH = "/suggestion";
@@ -29,6 +31,7 @@ public class SuggestionService {
      */
     public SuggestionResponseDto getSuggestion(SuggestionRequestDto suggestionRequestDto) {
         try {
+            log.info("SuggestionService.getSuggestion : suggestionRequestDto = {}", suggestionRequestDto);
             FlaskSuggestionRequestDto flaskSuggestionRequest = new FlaskSuggestionRequestDto(suggestionRequestDto.getModel(), suggestionRequestDto.getTargetWord(), suggestionRequestDto.getSentence(), suggestionRequestDto.getContextLen(), suggestionRequestDto.getText(), suggestionRequestDto.getAbbreviation());
             FlaskSuggestionResponseDto flaskSuggestionResponse = FlaskServerManager.getFlaskResponse(FLASK_SUGGESTION_PATH, HttpMethod.POST, flaskSuggestionRequest, FlaskSuggestionResponseDto.class);
             if (flaskSuggestionResponse != null) {

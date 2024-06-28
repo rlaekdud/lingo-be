@@ -2,6 +2,7 @@ package kr.co.ipalab.lingobe.global.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.time.Duration;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 @Component
+@Slf4j
 public class FlaskServerManager {
 
     private static String flaskIp;
@@ -39,6 +41,8 @@ public class FlaskServerManager {
         RestTemplate restTemplate = createRestTemplateWithTimeouts();
         ObjectMapper objectMapper = new ObjectMapper();
 
+        log.info("FlaskServerManager.getFlaskResponse : path = {}, methodType = {}, flaskRequestDto = {}, flaskResponseDtoClass = {}", path);
+
         // Header set
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
@@ -52,6 +56,7 @@ public class FlaskServerManager {
         // HttpEntity set
         HttpEntity<String> httpEntity = new HttpEntity<>(requestBody, httpHeaders);
 
+        log.info("FlaskServerManager.getFlaskResponse : httpEntity = {}", httpEntity);
         // request to flask server
         try {
             ResponseEntity<?> responseEntity = restTemplate.exchange(
@@ -60,6 +65,8 @@ public class FlaskServerManager {
                 httpEntity,
                 flaskResponseDtoClass
             );
+
+            log.info("FlaskServerManager.getFlaskResponse : responseEntity = {}", responseEntity);
 
             // response object return
             return (T) responseEntity.getBody();
