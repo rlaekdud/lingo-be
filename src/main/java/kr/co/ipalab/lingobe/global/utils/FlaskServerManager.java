@@ -57,6 +57,7 @@ public class FlaskServerManager {
         HttpEntity<String> httpEntity = new HttpEntity<>(requestBody, httpHeaders);
 
         log.info("FlaskServerManager.getFlaskResponse : httpEntity = {}", httpEntity);
+        log.info("flaskIp = {}, flaskPort = {}, flaskUri = {}", flaskIp, flaskPort, flaskUri);
         // request to flask server
         try {
             ResponseEntity<?> responseEntity = restTemplate.exchange(
