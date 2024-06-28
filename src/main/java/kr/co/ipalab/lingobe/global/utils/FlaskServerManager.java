@@ -72,10 +72,7 @@ public class FlaskServerManager {
             return (T) responseEntity.getBody();
 
         } catch (RestClientException e) {
-            // process exception
-            if (e.getMessage().contains("Read timed out")) {
-                throw new Exception("Flask server response timeout");
-            }
+            log.error("FlaskServerManager.getFlaskResponse : RestClientException = {}", e.getMessage());
         }
 
         return null;
