@@ -78,7 +78,7 @@ public class FlaskServerManager {
         RestTemplateBuilder restTemplateBuilder = new RestTemplateBuilder();
         return restTemplateBuilder
             .setConnectTimeout(Duration.ofSeconds(5))
-            .setReadTimeout(Duration.ofSeconds(5))
+            .setReadTimeout(Duration.ofSeconds(10))
             .build();
     }
 }
