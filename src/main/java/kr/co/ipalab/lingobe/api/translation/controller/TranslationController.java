@@ -29,7 +29,7 @@ public class TranslationController {
      * @param translationRequestDto dto used in translationRequest
      * @return Response<?>
      */
-    @GetMapping("/translation")
+    @PostMapping("/translation")
     @Operation(summary = "번역", description = "문장을 번역하고 이에 대한 자체 성능 평가 결과와 함께 제공합니다.")
     @ApiResponse(responseCode = "200", description = "성공", content = @Content(schema = @Schema(implementation = Response.class)))
     public Response<?> translate(@RequestBody TranslationRequestDto translationRequestDto) {

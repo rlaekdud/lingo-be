@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class SuggestionRequestDto {
     private String model;
-    private Integer targetWord;
+    private String targetWord;
     private Boolean sentence;
     private Integer contextLen;
     private String text;

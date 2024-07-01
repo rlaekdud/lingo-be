@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class TranslationService {
 
-    private final String FLASK_TRANSLATION_PATH = "/translation";
+    private final String FLASK_TRANSLATION_PATH = "/translate";
 
     /**
      * get translation and its score from text
@@ -27,10 +27,15 @@ public class TranslationService {
      */
     public TranslationResponseDto translateText(TranslationRequestDto translationRequestDto) {
         try {
-            FlaskTranslationResponseDto flaskTranslationResponse = FlaskServerManager.getFlaskResponse(FLASK_TRANSLATION_PATH, HttpMethod.GET, translationRequestDto, FlaskTranslationResponseDto.class);
-            return TranslationResponseDto.builder()
-                .translatedResult(flaskTranslationResponse.getOutput())
-                .build();
+            FlaskTranslationResponseDto flaskTranslationResponse = FlaskServerManager.getFlaskResponse(FLASK_TRANSLATION_PATH, HttpMethod.POST, translationRequestDto, FlaskTranslationResponseDto.class);
+            if (flaskTranslationResponse != null) {
+                return TranslationResponseDto.builder()
+                    .score(flaskTranslationResponse.getScore())
+                    .translatedResult(flaskTranslationResponse.getOutput())
+                    .build();
+            } else {
+                throw new FlaskResponseTimeoutError();
+            }
         } catch (Exception e) {
             throw new FlaskResponseTimeoutError();
         }

@@ -6,3 +6,8 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/lingo-db
+
+flask:
+  ip: ${DEPLOY_HOST}
+  port: :8000
+  uri: /lingo-ai/api
