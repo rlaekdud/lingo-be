@@ -9,6 +9,6 @@ spring:
       uri: mongodb://localhost:27017/lingo-db
 
 flask:
-  ip: localhost
+  ip: http://localhost
   port: :8000
   uri: /lingo-ai/api
