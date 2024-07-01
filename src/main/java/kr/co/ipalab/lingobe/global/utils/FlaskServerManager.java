@@ -57,7 +57,7 @@ public class FlaskServerManager {
         HttpEntity<String> httpEntity = new HttpEntity<>(requestBody, httpHeaders);
 
         log.info("FlaskServerManager.getFlaskResponse : httpEntity = {}", httpEntity);
-        log.info("flaskIp = {}, flaskPort = {}, flaskUri = {}", flaskIp, flaskPort, flaskUri);
+        log.info("flaskIp = {}, flaskPort = {}, flaskUri = {}, path = {}", flaskIp, flaskPort, flaskUri, path);
         // request to flask server
         try {
             ResponseEntity<?> responseEntity = restTemplate.exchange(
@@ -73,7 +73,7 @@ public class FlaskServerManager {
             return (T) responseEntity.getBody();
 
         } catch (Exception e) {
-            log.error("FlaskServerManager.getFlaskResponse : RestClientException = {}", e.getMessage());
+            log.error("FlaskServerManager.getFlaskResponse : Exception = {}", e.getMessage());
         }
 
         return null;
