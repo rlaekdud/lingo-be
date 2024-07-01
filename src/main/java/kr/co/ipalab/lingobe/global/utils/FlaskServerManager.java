@@ -72,7 +72,7 @@ public class FlaskServerManager {
             // response object return
             return (T) responseEntity.getBody();
 
-        } catch (RestClientException e) {
+        } catch (Exception e) {
             log.error("FlaskServerManager.getFlaskResponse : RestClientException = {}", e.getMessage());
         }
 
