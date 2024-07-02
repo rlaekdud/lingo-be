@@ -2,15 +2,46 @@ package kr.co.ipalab.lingobe.global.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.Operation;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.media.Content;
+import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import io.swagger.v3.oas.models.servers.Server;
+import org.springdoc.core.customizers.OperationCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SwaggerConfig {
+
+    @Bean
+    public OperationCustomizer operationCustomizer() {
+        return (operation, handlerMethod) -> {
+            this.addResponseBodyWrapperSchemaExample(operation);
+            return operation;
+        };
+    }
+
+    private void addResponseBodyWrapperSchemaExample(Operation operation) {
+        final Content content = operation.getResponses().get("200").getContent();
+        if (content != null) {
+            content.forEach((mediaTypeKey, mediaType) -> {
+                Schema<?> originalSchema = mediaType.getSchema();
+                Schema<?> wrapperSchema = wrapSchema(originalSchema);
+                mediaType.setSchema(wrapperSchema);
+            });
+        }
+    }
+
+    private Schema<?> wrapSchema(Schema<?> originalSchema) {
+        Schema<?> wrapperSchema = new Schema<>();
+        wrapperSchema.addProperties("status", new Schema<>().type("integer").example(200));
+        wrapperSchema.addProperties("message", new Schema<>().type("string"));
+        wrapperSchema.addProperties("data", originalSchema);
+        return wrapperSchema;
+    }
 
     @Bean
     public OpenAPI openAPI() {
