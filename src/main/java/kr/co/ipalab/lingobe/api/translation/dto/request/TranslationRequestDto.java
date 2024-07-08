@@ -3,6 +3,7 @@ package kr.co.ipalab.lingobe.api.translation.dto.request;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Map;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class TranslationRequestDto {
     @Schema(description = "서비스", example = "huggingface_nllb")
     private String service;

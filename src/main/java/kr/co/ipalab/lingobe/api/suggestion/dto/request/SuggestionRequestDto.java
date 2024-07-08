@@ -12,11 +12,17 @@ import lombok.Setter;
 @AllArgsConstructor
 public class SuggestionRequestDto {
 
-    @Schema(description = "모델명", example = "llama2_7b")
-    private String model;
+    @Schema(description = "추천 모델명", example = "llama2_7b")
+    private String suggestionModel;
 
     @Schema(description = "타겟 단어", example = "CT")
     private String targetWord;
+
+    @Schema(description = "언어", example = "ko")
+    private String lan;
+
+    @Schema(description = "번역 모델명", example = "huggingface_nllb")
+    private String translationModel;
 
     @Schema(description = "문장 여부", example = "false")
     private Boolean sentence;
