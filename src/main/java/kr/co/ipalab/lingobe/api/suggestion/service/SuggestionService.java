@@ -62,8 +62,11 @@ public class SuggestionService {
                 throw new FlaskResponseTimeoutError();
             }
 
-            // translate english word to source language word
-            List<String> translatedWordList = translateWordListFromEng(flaskSuggestionResponse, suggestionRequestDto);
+            List<String> translatedWordList = flaskSuggestionResponse.getSuggestions();
+            if (!suggestionRequestDto.getLan().equals("en")) {
+                // translate english word to source language word
+                translatedWordList = translateWordListFromEng(flaskSuggestionResponse, suggestionRequestDto);
+            }
 
             log.info("translatedWordList: {}", translatedWordList);
 
