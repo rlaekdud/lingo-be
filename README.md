@@ -51,6 +51,7 @@
     ```
     {
         model: "string", // suggestion model
+        lan: "string", // language
         targetWord: integer // Indexing by spacing
         sentence: boolean // Whether to look at the context as a sentence basis
         cntxt_len: integer // How long are you going to look at the context? e.g. 1:Front and back sentences
