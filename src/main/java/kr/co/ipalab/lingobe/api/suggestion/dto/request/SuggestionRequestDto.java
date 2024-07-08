@@ -18,7 +18,7 @@ public class SuggestionRequestDto {
     @Schema(description = "타겟 단어", example = "CT")
     private String targetWord;
 
-    @Schema(description = "언어", example = "ko")
+    @Schema(description = "언어", example = "en")
     private String lan;
 
     @Schema(description = "번역 모델명", example = "huggingface_nllb")
