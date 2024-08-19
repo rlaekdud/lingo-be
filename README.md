@@ -50,7 +50,11 @@
 - Request body :
     ```
     {
-        model: "string", // suggestion model
+        suggestionModel: "string", // suggestion model
+  
+        lan: "string", // language
+        translationModel: "string", // translation model
+  
         targetWord: integer // Indexing by spacing
         sentence: boolean // Whether to look at the context as a sentence basis
         cntxt_len: integer // How long are you going to look at the context? e.g. 1:Front and back sentences
